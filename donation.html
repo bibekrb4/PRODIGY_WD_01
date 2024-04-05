@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Landing Page(Donation)</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+<nav class="navbar" id="navbar">
+<div class="logo-container">
+<img src="logo_small.png" alt="Logo">
+</div>
+<div class="menu-container">
+<ul>
+</ul>
+</div>
+</nav>
+<div class="donation-ctnr">
+<div class="donation-content">
+<div class="donation-title">Send a Donation</div>
+<div class="donation-input-ctnr">
+<div class="donation-input-title">Amount:</div>
+<label class="radio-option"><input type="radio" name="fruit" value="m1" checked> $5</label>
+<label class="radio-option"><input type="radio" name="fruit" value="m2"> $20</label>
+<label class="radio-option"><input type="radio" name="fruit" value="m3"> Custom:</label>
+<div><input type="number" max="999" class="donation-input" placeholder="Enter amount"></div>
+</div>
+<div class="donation-btn">Donate</div>
+</div>
+</div>
+<div class="footer-ctnr">
+<div class="img-ctnr">
+<img src="logo_big.png"/>
+</div>
+<div class="footer-social-icons">
+<a href="#">
+<i class="fab fa-facebook"></i>
+</a>
+<a href="#">
+<i class="fab fa-twitter"></i>
+</a>
+<a href="#">
+<i class="fab fa-instagram"></i>
+</a>
+</div>
+<div class="footer-menu-ctnr" style="display: flex;">
+<ul>
+<li><a href="#" style="font-weight: bold; color:#f1f8e9">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#">Contact Us</a></li>
+<li><a href="#join">Join Us</a></li>
+<li><a href="#donate">Donate</a></li>
+</ul>
+</div>
+<div class="footer-copyright">
+<p>&copy; 2023
+<a href="#">Leaves of Hope</a>. All rights reserved.</p>
+</div>
+</div>
+<script>
+window.addEventListener('scroll', function() {changeColor('#00796b', '#512da8');});
+function changeColor(col1, col2) {
+const nav = document.getElementById('navbar');
+const scrollPosition = window.scrollY;
+const windowHeight = document.body.scrollHeight;
+const bodyHeight = document.body.clientHeight;
+let lerp=function(a, b, t) {return a * (1 - t) + b * t;}
+let maxScroll = Math.max(bodyHeight - windowHeight, windowHeight);
+const scrollPercentage = scrollPosition / maxScroll;
+const r = Math.round(lerp(hexToRgb(col1).r, hexToRgb(col2).r, scrollPercentage));
+const g = Math.round(lerp(hexToRgb(col1).g, hexToRgb(col2).g, scrollPercentage));
+const b = Math.round(lerp(hexToRgb(col1).b, hexToRgb(col2).b, scrollPercentage));
+nav.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+}
+function hexToRgb(hex) {
+hex = hex.replace('#', '');
+return {
+r: parseInt(hex.substring(0, 2), 16),
+g: parseInt(hex.substring(2, 4), 16),
+b: parseInt(hex.substring(4, 6), 16)
+};
+}
+</script>
+</body>
+</html>
